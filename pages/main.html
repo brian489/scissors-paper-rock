@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scissors-paper-rock</title>
+    <link rel="stylesheet" href="../styles/main-style.css">
+    
+</head>
+<body>
+    <!-- Add power to cards so that draws are resolved by who has the highest power -->
+    <div class="game-container">
+        <div id="computer-card-container" >
+            <ul id="computer-cards">
+           
+            </ul>
+        </div>
+
+        <div class="options">
+            <div class="current-play">
+                    <div id="scissors-count" class="Scissors play human">1</div>
+                    <div id="paper-count" class="Paper play human">2</div>
+                    <div id="rock-count" class="Rock play human">3</div>
+            </div>
+
+            <div class = "actions">
+                <button id="challenge">Challenge</button>
+                <button id="swap">Swap</button>
+                <!-- <div class="timer">00:00</div> -->
+            </div>
+            <span id="lives"></span>
+
+        </div>
+
+        <div id="human-card-container">
+            <ul id="human-cards">
+               
+            </ul>
+        </div>
+        
+    </div>
+    <script src="../scripts/dataStore.js"></script>
+    <script src="../scripts/game.js"></script>
+    <script src="../scripts/start.js"></script>
+    <script src="../scripts/interface.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

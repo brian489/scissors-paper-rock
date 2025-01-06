@@ -1,0 +1,125 @@
+body {
+    background-image: url("../Images/table.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: antiquewhite;
+    background-size: cover;
+
+    height: 100vh;
+}
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid red; */
+    height: 100vh;
+}
+
+ul {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 220px;
+    width: 700px;
+    gap: 10px;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    width: 240px;
+    border-radius: 20px;
+    border: 3px solid black;
+    background-color: white;
+}
+
+.Scissors {
+    background-image: url("../Images/scissors.png");
+}
+.Paper {
+    background-image: url("../Images/paper.png");
+}
+.Rock {
+    background-image: url("../Images/rock.png");
+}
+
+.unknown {
+    background-image: url("../Images/unknown.png");
+}
+.card {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+button {
+    color: rgb(125, 115, 115);
+    padding: 10px 20px 10px;
+    margin: 10px auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    background-color: bisque;
+    border: 2px;
+    border-color: rgb(1, 255, 255);
+    border-radius: 15px;
+    cursor: pointer;
+    height: 10vh;
+    width: auto;
+    font-size: 50px;
+}
+
+
+.play {
+    height: 150px;
+    width: 150px; 
+    border: 3px solid black;
+    background-size: cover;
+    padding-top: 20px;
+
+    font-weight: bold;
+    font-size: 100px;
+    text-align: center;
+    color: sandybrown;
+    text-shadow: 0 0  10px black ;
+
+}
+
+.current-play {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px
+}
+
+.selectable {
+    border-color: Green;
+    cursor: pointer;
+}
+.humanSelected, .computerSelected, .selected {
+    border-color: red;
+    color: red;
+}
+
+#lives {
+    color: red;
+    height: auto;
+    font-size: 70px;
+    text-align: center;
+}

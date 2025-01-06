@@ -54,4 +54,4 @@ function clear() {
     });
 }
 
-export {getData, setData, clear}
+// export {getData, setData, clear}

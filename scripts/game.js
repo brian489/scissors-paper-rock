@@ -2,7 +2,7 @@
  * This file is meant to be used for functions required to run the game
  * eg. determining winner/loser or a round etc.
  */
-import { getData, setData, clear } from "./dataStore.js";
+// import { getData, setData, clear } from "./dataStore.js";
 
 /**
  *  Determines the winner and loser 
@@ -11,29 +11,18 @@ import { getData, setData, clear } from "./dataStore.js";
  * 
  * @returns {string} - The outcome of the round 
  */
-export function playRound(computer, player) {
-    
+function playRound(computer, player) {
+    let outcome;
     if (computer == player) {
         outcome = "Draw"
     } else  if (computer == "Scissors") {
-        if (player == "Paper") {
-            outcome = "Lose"
-        } else {
-            outcome = "Win"
-        }
+        (player == "Paper") ? outcome = "Lose" :  outcome = "Win"
     } else if (computer == "Paper") {
-        if (player == "Rock") {
-            outcome = "Lose"
-        } else {
-            outcome = "Win"
-        }
+        (player == "Rock") ? outcome = "Lose" : outcome = "Win"
     } else if (computer == "Rock") {
-        if (player == "Paper") {
-            outcome = "Win"
-        } else {
-            outcome = "Lose"
-        }
+        (player == "Paper") ? outcome = "Win" : outcome = "Lose"
     }
+    removeCards(outcome);
     return outcome;
 }
 
@@ -51,22 +40,45 @@ function createCard(isHuman, card) {
     }
 }
 
-function updateScore(a, b, c) {
-    let message = "You " + c + "! "
-    if (c == "Drew") {
-        message += a + " draws with " + b
-    } else if (c == "Win") {
-        message += b + " beats " + a 
-        computerLives--;
-    } else {
-        message += a + " beats " + b
-        humanLives--;
-    }
-    textBit.textContent = message;
-    yourScore.textContent = hscore;
-    computerScore.textContent = cscore;
-}
 
 function getComputerChoice () {
     return computerCards[Math.floor(Math.random() * (computerLives))] 
+}
+
+
+function verifyRound(isChallenge) {
+    const humanElement = document.getElementsByClassName("humanSelected")
+    const compElements = document.getElementsByClassName("computerSelected") 
+    if (isChallenge) {
+        if (humanElement.length + compElements.length !== 2) prompt("Select only one of your cards and one of your opponent's cards to challenge")
+        else {
+            const humanString = humanElement[0].classList
+            const humanChoice = data.choiceArray.find(word => humanString.contains(word));
+            const computerIndex = Array.from(compElements[0].parentElement.children).indexOf(compElements[0]);
+            return [humanChoice, computerIndex]
+        }
+    } else {
+        if (humanElement < 1) prompt("Select at least one card to swap")
+        else getNewCards(humanElement);
+    }
+    
+}
+
+function getNewCards(cardsForSwap) {
+    if (cardsForSwap.length === 0) {
+        //some sort of error
+    } else {  
+      
+        let indexArray = [];
+        for(const i of cardsForSwap) indexArray += Array.from(i.parentElement.children).indexOf(i);
+        for (const j of indexArray) {
+            const newCardIndex = Math.floor(Math.random() * data.deck.length)
+            const temp = data.player.playerCards[j];
+            data.player.playerCards[j] = data.deck[newCardIndex];
+            data.deck[newCardIndex] = temp;
+        }
+        updateCards(indexArray)
+    }
+    
+
 }

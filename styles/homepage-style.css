@@ -7,7 +7,6 @@ body {
     background-color: aliceblue;
 }
 
-
 .content-container {
     display: flex;
     flex-direction: column;
@@ -18,6 +17,7 @@ body {
     padding: 20px 15px 40px;
     margin: 32px;
     color: rgb(248, 237, 223);
+    /* height:50vh; */
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-.script-container {
+.button-container {
     width: 75%;
     padding: 10px;
     display: flex;
@@ -54,8 +54,6 @@ button {
     cursor: pointer;
 }
 
-.score-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
+a {
+    text-decoration: none;
 }

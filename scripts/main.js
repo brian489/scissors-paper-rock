@@ -1,27 +1,43 @@
 /** This is the made script file is run from when the player opens the page to when they leave */
 
-import { getData, setData, clear } from "./dataStore.js";
-import { populateCardsInPlay, populatePlayerComputerCards } from "./start.js";
+let challengeButton, swapButton, optionArray;
 
 
-// const challengeButton = document.querySelector("#challenge");
-// const swapButton = document.querySelector("#swap");
-let currentChallenge = 0;
+challengeButton = document.getElementById("challenge");
+swapButton = document.getElementById("swap");
+
+
 
 function startGame() {
     clear();
     populateCardsInPlay();
     populatePlayerComputerCards();  
     intialisePlayers();
+    updateLives();
+
+    challengeButton.onclick = () => {
+
+        if (challengeButton.classList.contains("selected")) {
+            optionArray = verifyRound(true);
+            const outcome = playRound(data.computer.computerCards[optionArray[1]], optionArray[0]); 
+            updatePoints(outcome, optionArray);
+        } 
+        initialiseCardsForChallenge();
+        setTimeout(deselectCards(), 2000) 
+        challengeButton.classList.toggle("selected")
+        
+    }
+    swapButton.onclick = () => {
+        if (swapButton.classList.contains("selected")) {
+            verifyRound(false);
+        } 
+        initialiseCardsForSwap();
+        setTimeout(deselectCards(), 2000) 
+        swapButton.classList.toggle("selected")
+    }
 }
 
-startGame();
-
-// challenge.addEventListener("click", challenge())
-
-
-// swap.addEventListener("click", swap())
-
+startGame()
 
 
 
